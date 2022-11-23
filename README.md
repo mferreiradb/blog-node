@@ -139,3 +139,44 @@
                 });
 
                 module.exports = Category;
+
+*Definição do relacionamento das tabelas*
+
+- Em um dos models, importa-se o model que deseja estabelecer a relação
+
+- Utiliza-se a função belongsTo() na variável do model que está importando, tendo como valor o model importado
+    - Desta forma, diz-se que o model que executa a função pertence ao model que está no valor
+    - Forma de representar um relacionamento um para um no Sequelize
+
+- Utiliza-se a função hasMany() na variável do model que está sendo importado, tendo como valor o model importando
+    - Desta forma, diz-se que o model que executa a função contém o model que está no valor
+    - Forma de representar um relacionamento um para para muitos no Sequelize
+
+                const db = require('./db.js');
+                const Sequelize = require('sequelize');
+                const Category = require('./Category.js');
+
+                const Article = db.sequelize.define('articles', {
+                    title: {
+                        type: Sequelize.STRING,
+                        allowNull: false
+                    },
+                    slug: { //TITULO POSSÍVEL DE SER UTILIZADO EM UMA URL
+                        type: Sequelize.STRING,
+                        allowNull: false
+                    },
+                    body: {
+                        type: Sequelize.TEXT,
+                        allowNull: false
+                    }
+                });
+
+                Category.hasMany(Article);
+                Article.belongsTo(Category);
+
+                module.exports = Article;
+
+- Sempre que se define um relacionamento, deve ser feita a atualização do Banco de Dados
+
+                Category.sync({force: true});
+                Article.sync({force: true});

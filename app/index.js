@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 
+const Article = require('./models/Article.js');
+const Category = require('./models/Category.js');
+
 const Categories = require('./category/categoriesController.js');
 const Articles = require('./articles/articlesController.js');
 const Home = require('./Home/homeController.js');
