@@ -82,7 +82,7 @@
 
 - Após a contrução das rotas,e xporta-se o módulo
 
-                nst express = require('express');
+                cnst express = require('express');
                 const router = express.Router();
                 router.get('/categories', (req, res) => {
                     res.send('Rota de categorias');
