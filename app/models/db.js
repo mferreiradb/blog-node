@@ -11,4 +11,7 @@ db.authenticate().then(() => {
 	console.log(err);
 });
 
-module.exports = db;
+module.exports = {
+	Sequelize: Sequelize,
+	sequelize: db
+};

@@ -99,3 +99,43 @@
 
 - Com o prefixo, a rota passa a ser acessada somente por http://localhost:8080/cat/categories
 - Para que não haja prefixo, coloca-se apenas uma barra, de form que a rota possa ser acessada somente por http://localhost:8080/categories
+
+*Definição dos models*
+
+- Definir os models que serão utilizados
+
+                const db = require('./db.js');
+                const Sequelize = require('sequelize');
+
+                const Article = db.sequelize.define('articles', {
+                    title: {
+                        type: Sequelize.STRING,
+                        allowNull: false
+                    },
+                    slug: { //TITULO POSSÍVEL DE SER UTILIZADO EM UMA URL
+                        type: Sequelize.STRING,
+                        allowNull: false
+                    },
+                    body: {
+                        type: Sequelize.TEXT,
+                        allowNull: false
+                    }
+                });
+
+                module.exports = Article;
+
+                const db = require('./db.js');
+                const Sequelize = require('sequelize');
+
+                const Category = db.sequelize.define('categories', {
+                    title: {
+                        type: Sequelize.STRING,
+                        allowNull: false
+                    },
+                    slug: { //TITULO POSSÍVEL DE SER UTILIZADO EM UMA URL
+                        type: Sequelize.STRING,
+                        allowNull: false
+                    }
+                });
+
+                module.exports = Category;
