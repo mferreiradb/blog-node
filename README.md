@@ -52,3 +52,50 @@
     - Usa-se a função include para chamar o arquivo do componente desejado, apontando a propriedade partials seguido do caminho e nome do arquivo
 
                     <%- include('partials/header.ejs') %>
+
+*ARQUITETURA DE PASTAS*
+
+- models
+
+    - Camada de manipulação e acesso aos dados
+    - Arquivos de conexão com o Banco de Dados e tabelas
+    - Arvos de comunicação com APIs de dados
+
+- public
+
+    - Arquivos CSS, EJS, HTML, IMG
+
+- views
+
+    - Camada de interface
+    - Arquivos das páginas (HTML/EJS)
+
+- controllers
+    
+    - Camada de controle
+    - Arquivos que guardam as lógicas das rotas
+    - Neste projeto, cada ccontroller terá sua pasta, ao invés de permanecerem todos os arquivos em uma única página Controller
+
+*Express Router*
+
+- Ao dividir-se os controllers, usa-se as rotas do express para a construção das rotas
+
+- Após a contrução das rotas,e xporta-se o módulo
+
+                nst express = require('express');
+                const router = express.Router();
+                router.get('/categories', (req, res) => {
+                    res.send('Rota de categorias');
+                });
+
+                module.exports = router;
+
+- No index.js, para a utilização da rota, importa-se o módulo e usa-se app.use()
+- Antes da passagem da rota, define-se um prefixo. A rota torna-se acessível somente sendo acessada após o prefixo
+
+                const Categories = require('./categories/categoriesController.js');
+
+                app.use('/cat', Categories);
+
+- Com o prefixo, a rota passa a ser acessada somente por http://localhost:8080/cat/categories
+- Para que não haja prefixo, coloca-se apenas uma barra, de form que a rota possa ser acessada somente por http://localhost:8080/categories
