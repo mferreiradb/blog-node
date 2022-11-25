@@ -1,4 +1,4 @@
-**PROJETO DE BLOG COM NODDE JS**
+i**PROJETO DE BLOG COM NODDE JS**
 
 *Dependencias*
 
@@ -21,6 +21,10 @@
 - EsLint
 
         npm init @eslint/config
+
+- Slugify
+
+        npm i --save slugify
 
 - Bootstrap
 
@@ -180,3 +184,5 @@
 
                 Category.sync({force: true});
                 Article.sync({force: true});
+
+*Transformando títulos em slugs*
