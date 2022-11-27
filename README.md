@@ -186,3 +186,24 @@ i**PROJETO DE BLOG COM NODDE JS**
                 Article.sync({force: true});
 
 *Transformando títulos em slugs*
+
+- Utilização da biblioteca Slugify
+
+    - Utiliza-se a função slugify() e passando um valor. O valor na função será convertido para slug
+
+                router.post('/categorires/save', (req, res) => {
+                    const title = req.body.title.toUpperCase();
+
+                    if (title.length > 0) {
+                        console.log(`Dado: ${title}\ntamanho: ${title.length}`);
+                        Category.create({
+                            title: title,
+                            slug: slugify(title)
+                        }).then(() => {
+                            res.redirect('/');
+                        });
+                    } else {
+                        res.redirect('/admin/categories/new');
+                        console.log('Conteúdo inválido');
+                    }
+                });
