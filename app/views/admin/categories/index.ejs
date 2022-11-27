@@ -21,12 +21,14 @@
                     </thead>
 
                     <tbody>
-                        <tr>
-                            <th>1</th>
-                            <th>Dev Web</th>
-                            <th>dev-web</th>
-                            <th></th>
-                        </tr>
+                        <% categories.forEach((category) => { %>
+                            <tr>
+                                <th><%- category.id %></th>
+                                <th><%- category.title %></th>
+                                <th><%- category.slug %></th>
+                                <th></th>
+                            </tr>
+                        <% }) %>
                     </tbody>
                 </table>
             </div>
