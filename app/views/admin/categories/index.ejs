@@ -10,6 +10,7 @@
             </div>
 
             <div class="card-body">
+                <a href="/admin/categories/new" class="btn btn-success mb-4">Criar nova categoria</a>
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -26,7 +27,10 @@
                                 <th><%- category.id %></th>
                                 <th><%- category.title %></th>
                                 <th><%- category.slug %></th>
-                                <th></th>
+                                <th>
+                                    <button class="btn btn-warning person">Editar</button>
+                                    <buttom class="btn btn-danger person">Excluir</buttom>
+                                </th>
                             </tr>
                         <% }) %>
                     </tbody>

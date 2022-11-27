@@ -1,0 +1,10 @@
+body {
+    font-family: Roboto;
+    background-color: blue;
+}
+
+@media (max-width: 990px) {
+    .person + .person {
+        margin-top: 0.5rem;
+    }
+}
