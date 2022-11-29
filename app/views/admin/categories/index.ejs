@@ -24,12 +24,16 @@
                     <tbody>
                         <% categories.forEach((category) => { %>
                             <tr>
-                                <th><%- category.id %></th>
-                                <th><%- category.title %></th>
-                                <th><%- category.slug %></th>
+                                <th><%= category.id %></th>
+                                <th><%= category.title %></th>
+                                <th><%= category.slug %></th>
                                 <th>
                                     <button class="btn btn-warning person">Editar</button>
-                                    <buttom class="btn btn-danger person">Excluir</buttom>
+                                    
+                                    <form method="POST" action="/categories/delete" class="person">
+                                        <input type="hidden" name="id" value="<%= category.id %>">
+                                        <button class="btn btn-danger person" type="submit">Excluir</button>
+                                    </form>
                                 </th>
                             </tr>
                         <% }) %>
