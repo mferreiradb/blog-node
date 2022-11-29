@@ -63,8 +63,8 @@ router.get('/admin/categories/edit/:id', (req, res) => {
 		} else {
 			res.redirect('/admin/categories');
 		}
-	// eslint-disable-next-line no-unused-vars
 	}).catch((err) => {
+		console.log(err);
 		res.redirect('/admin/categories');
 	});
 });
