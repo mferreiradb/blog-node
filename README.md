@@ -207,3 +207,105 @@ i**PROJETO DE BLOG COM NODDE JS**
                         console.log('Conteúdo inválido');
                     }
                 });
+
+*Exclusão de dados via post*
+
+- A rota verifica se o dado enviado é um numero, pois está sendo referenciado o ID
+
+                router.post('/categories/delete', (req, res) => {
+                    var id = req.body.id;
+
+                    if (id.length > 0) {
+                        if (!isNaN(id)) {
+                            Category.destroy({
+                                where: {
+                                    id: id
+                                }
+                            }).then(() => {
+                                res.redirect('/admin/categories');
+                            });
+                        } else {
+                            res.redirect('/admin/categories');
+                        }
+                    } else {
+                        res.redirect('/admin/categories');
+                    }
+                });
+
+- O botão para exclusão é englobado por um form e recebe um input invisível com o valor que deverá ser passado
+
+                <tbody>
+                    <% categories.forEach((category) => { %>
+                        <tr>
+                            <th><%= category.id %></th>
+                            <th><%= category.title %></th>
+                            <th><%= category.slug %></th>
+                            <th>
+                                <button class="btn btn-warning person">Editar</button>
+                                
+                                <form method="POST" action="/categories/delete" class="person">
+
+                                    <input type="hidden" name="id" value="<%= category.id %>">
+
+                                    <button class="btn btn-danger person" type="submit">Excluir</button>
+
+                                </form>
+                            </th>
+                        </tr>
+                    <% }) %>
+                </tbody>
+
+*Implementação de confirmação de exclusão*
+
+- Em uma tag <script></script> diciona-se uma função dom com evento preventDefault(), que interrompe a submissão do formulário
+- Após a interrupção da submissão do relatório, adicionamos a confirmação de exclusão
+- A função recebe dois parametro: o primeiro se refere ao evento que está sendo executado (submissão do formulário), o segundo se refere a qual elemento está disparando o evenro (formulário)
+- Os parametros devem ser passados em um evendo onsubit="" no formulário html. A referencia ao evento permanece como o nome do parametro, porém a referencia ao elemento html é passada como "this", pois está sendo referenciado no proprio elemento que dispara o evento
+
+                <form method="POST" action="/categories/delete" class="person" onsubmit="confirmDelete(event, this)">
+
+                    <input type="hidden" name="id" value="<%= category.id %>">
+
+                    <button class="btn btn-danger person" type="submit">Excluir</button>
+                    
+                </form>
+
+                <script>
+                    const confirmDelete = (event, form) =>{
+                        event.preventDefault();
+                        let decision = confirm('Deseja excluir a categoria?');
+                        if (decision) {
+                            alert('Categoria excluída');
+                            form.submit();
+                        } else {
+                            alert('Categoria não excluída');
+                        }
+                    }
+                </script>
+
+*Buscando registro por id*
+
+- Utiliza-se a função findByPk()
+
+                router.get('/admin/categories/edit/:id', (req, res) => {
+                    let id = req.params.id;
+
+                    if (isNaN(id)){
+                        res.redirect('/admin/categories');
+                    }
+
+                    Category.findByPk(id).then((category) => {
+
+                        if (id.length > 0) {
+
+                            res.render('admin/categories/edit', {category: category});
+                            
+                        } else {
+                            res.redirect('/admin/categories');
+                        }
+
+                    // eslint-disable-next-line no-unused-vars
+                    }).catch((err) => {
+                        res.redirect('/admin/categories');
+                    });
+                });
