@@ -7,12 +7,10 @@ body {
     width: 30%;
 }
 
-.person {
-    display: inline;
+#article {
+    cursor: text;
 }
 
-@media (max-width: 768px) {
-    .person {
-        display: block;
-    }    
+.person {
+    display: inline;
 }

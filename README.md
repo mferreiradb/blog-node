@@ -26,6 +26,14 @@ i**PROJETO DE BLOG COM NODDE JS**
 
         npm i --save slugify
 
+- TinyMCE
+
+    - Baixar em:
+
+        https://www.tiny.cloud/get-tiny/self-hosted/
+
+    - Após o download do arvivo zip, basta colocar a pasta que está dentro do zip na pasta public
+
 - Bootstrap
 
     - Baixar no site e jogar os arquivos dentro  do projeto (versão 4.5 é usada neste exemplo)
@@ -309,3 +317,96 @@ i**PROJETO DE BLOG COM NODDE JS**
                         res.redirect('/admin/categories');
                     });
                 });
+
+*Utilizando TinyMCE*
+
+- Carrega-se o script do TinyMCE na view que desejamos utilizar
+
+                <script src="/tinymce/js/tinymce/tinymce.min.js"></script>
+
+- Após a importação do script, adicionamos um ID na textarea que desejamos aplicar as ferramentas e em uma tag script apontamos o id para que sejam adicionadas as funcionalidades
+
+                <script>
+                    tinymce.init({
+                        selector: '#article'
+                    })
+                </script>
+
+- É possível adicionar mais funcionalidades ao TinyMCE através dos plugins
+
+    - Para adicionar novos plugins, basta acrescentar ao script, a propriedade plugins e informar em um array os plugins desejados. Os plugins são informados englobados nas mesmas aspas e são separados por espaços
+
+                <script>
+                    tinymce.init({
+                        selector: '#article',
+                        plugins: 'lists advlist autolink link image print preview searchreplace wordcount fullscreen insertdatetime media save table paste emoticons'
+                    })
+                </script>
+
+    - Advlist
+
+        - Cria listas
+    
+    - Autolink
+
+        - Quando um link for copiado e colado no texto, ele será estilizado automaticamente
+    
+    - link
+
+        - Cria links com botão
+    
+    - Image
+
+        - Permite adicionar imagens
+    
+    - Lists
+
+        - Listas simples
+    
+    - Print
+
+        - Para imprimir o artigo
+    
+    - Preview
+
+        - Previsualização do que está sendo escrito
+
+    - Hr
+
+        - Adiciona uma linha
+
+    - Searchreplace
+
+        - Para pesquisar utilizando ctrl + f
+    
+    - Wordcount
+
+        - Informa a quantidade de palavras escritas
+    
+    - Fullscreen
+
+        - para abrir o editor em tela cheia
+
+    - Insertdatetime
+
+        - Insere a data no texto
+    
+    - Media
+
+        - Para inserção de midias
+    
+    - Save
+
+        - Para salvar como um arquivo no pc
+    
+    - Table
+
+        - Para criar tabelas
+    
+    - Paste
+
+        - Colagem diferente
+    
+    - Emoticons
+
+        - Inserir emoticons no post
