@@ -30,7 +30,7 @@
                                 <th>
                                     <button class="btn btn-warning person">Editar</button>
                                     
-                                    <form method="POST" action="/categories/delete" class="person">
+                                    <form method="POST" action="/categories/delete" class="person" onsubmit="confirmDelete(event, this)">
                                         <input type="hidden" name="id" value="<%= category.id %>">
                                         <button class="btn btn-danger person" type="submit">Excluir</button>
                                     </form>
@@ -45,3 +45,15 @@
 </body>
 
 <%- include('../../partials/scripts.ejs') %>
+<script>
+    const confirmDelete = (event, form) =>{
+        event.preventDefault();
+        let decision = confirm('Deseja excluir a categoria?');
+        if (decision) {
+            alert('Categoria excluída');
+            form.submit();
+        } else {
+            alert('Categoria não excluída');
+        }
+    }
+</script>
