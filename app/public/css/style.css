@@ -3,8 +3,16 @@ body {
     background-color: blue;
 }
 
-@media (max-width: 990px) {
-    .person + .person {
-        margin-top: 0.5rem;
-    }
+.table-person {
+    width: 30%;
+}
+
+.person {
+    display: inline;
+}
+
+@media (max-width: 768px) {
+    .person {
+        display: block;
+    }    
 }
