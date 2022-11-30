@@ -1,0 +1,59 @@
+<%- include('../../partials/head.ejs') %>
+
+<body>
+    <%- include('../../partials/navbar.ejs') %>
+    <div class="container">
+        <hr>
+        <div class="card">
+            <div class="card-header">
+                <h2>Lista de Categoria</h2>
+            </div>
+
+            <div class="card-body">
+                <a href="/admin/categories/new" class="btn btn-success mb-4">Criar nova categoria</a>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Titulo</th>
+                            <th>Slug</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <% categories.forEach((category) => { %>
+                            <tr>
+                                <th><%= category.id %></th>
+                                <th><%= category.title %></th>
+                                <th><%= category.slug %></th>
+                                <th>
+                                    <a class="" href="/admin/categories/edit/<%= category.id %>"><button class="btn btn-warning ">Editar</button></a>
+                                    
+                                    <form method="POST" action="/categories/delete" class="person" onsubmit="confirmDelete(event, this)">
+                                        <input type="hidden" name="id" value="<%= category.id %>">
+                                        <button class="btn btn-danger" type="submit">Excluir</button>
+                                    </form>
+                                </th>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+<%- include('../../partials/scripts.ejs') %>
+<script>
+    const confirmDelete = (event, form) =>{
+        event.preventDefault();
+        let decision = confirm('Deseja excluir a categoria?');
+        if (decision) {
+            alert('Categoria excluída');
+            form.submit();
+        } else {
+            alert('Categoria não excluída');
+        }
+    }
+</script>
