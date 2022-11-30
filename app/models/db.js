@@ -2,7 +2,8 @@ const Sequelize = require('sequelize');
 const banco = 'guia_press';
 const db = new Sequelize(banco, 'root', 'root', {
 	host: 'localhost',
-	dialect: 'mysql'
+	dialect: 'mysql',
+	timezone: '-03:00'
 });
 
 db.authenticate().then(() => {
