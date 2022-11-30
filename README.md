@@ -417,4 +417,12 @@ i**PROJETO DE BLOG COM NODDE JS**
 
                 https://www.tiny.cloud/get-tiny/language-packages/
 
-    - Após o download do script para tradução, basta colocar o script dentro de tinymce\js\tinymce\langs
+    - Após o download do script para tradução, basta colocar o script dentro de tinymce\js\tinymce\langs e após isso, adicionar a propriedade language com o valor da linguagem conforme o nome do arquivo
+
+                <script>
+                    tinymce.init({
+                        language: 'pt_BR',
+                        selector: '#article',
+                        plugins: 'lists advlist autolink link image print preview searchreplace wordcount fullscreen insertdatetime media save table paste emoticons'
+                    })
+                </script>
