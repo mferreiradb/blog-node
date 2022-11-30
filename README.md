@@ -410,3 +410,11 @@ i**PROJETO DE BLOG COM NODDE JS**
     - Emoticons
 
         - Inserir emoticons no post
+
+- Alteração da linguagem do TinyMCE
+
+    - Basta baixar o pacote da lingua desejada em
+
+                https://www.tiny.cloud/get-tiny/language-packages/
+
+    - Após o download do script para tradução, basta colocar o script dentro de tinymce\js\tinymce\langs
