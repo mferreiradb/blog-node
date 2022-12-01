@@ -5,6 +5,8 @@ const Category = require('../models/Category');
 
 router.get('/', (req, res) => {
 	Article.findAll({
+		order: [['id', 'desc']],
+		raw: true,
 		include: [{model: Category}]
 	}).then((articles) => {
 		res.render('index', {articles: articles});
