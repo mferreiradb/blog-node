@@ -445,3 +445,11 @@ i**PROJETO DE BLOG COM NODDE JS**
                 <th><%= article.title %></th>
                 <th><%= article.slug %></th>
                 <th><%= article.category.title %></th>
+
+*Correção de exibição dos artigos*
+
+- Para que os artigos sejam exibidos com a formatação utilizada na produção do artigo implementada, deve ser utilizada a tag especial do ejs com ifen, ao invés do sinal de igual ( <%-%> )
+
+                <div class="card-body">
+                    <%- article.body %>
+                </div>
