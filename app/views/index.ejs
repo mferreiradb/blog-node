@@ -1,10 +1,33 @@
 <%- include('partials/head.ejs') %>
+    <%- include('partials/navbarHome.ejs') %>
 
-<body>
-    <div class="container">
-        <h1>Teste</h1>
-        <a href="/admin/categories/new"><button class="btn-primary">Cadastrar</button></a>
-    </div>
-</body>
+        <body>
+            <div class="container">
 
-<%- include('partials/scripts.ejs') %>
+                <div class="jumbotron mt-4">
+                    <h1 class="display-4">Olá! Tudo bem?</h1>
+                    <p class="lead">Este é um blog desenvolvido por <a href="https://meu-site-opal.vercel.app/">Mauricio Ferreira</a></p>
+                    <hr class="my-4">
+                    <p>Ele foi desenvolvido totalmente com JavaScript, em seu frontend e backend.</p>
+                    <a class="btn btn-primary btn-lg" href="#" role="button">Leia mais</a>
+                  </div>
+
+                <% articles.forEach((article)=> { %>
+                    
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <%= article.title %>
+                        </div>
+
+                        <div class="card-body">
+                            <a href="/admin/categories/new"><button class="btn-primary">Ler artigo</button></a>
+                        </div>
+                    </div>
+
+                <% }) %>
+
+                <a href="/admin/categories/new"><button class="btn-primary">Cadastrar</button></a>
+            </div>
+        </body>
+
+        <%- include('partials/scripts.ejs') %>
