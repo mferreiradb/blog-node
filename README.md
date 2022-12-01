@@ -426,3 +426,22 @@ i**PROJETO DE BLOG COM NODDE JS**
                         plugins: 'lists advlist autolink link image print preview searchreplace wordcount fullscreen insertdatetime media save table paste emoticons'
                     })
                 </script>
+
+*Join a outra tabela com Sequelize*
+
+- Adiciona-se o parâmetro include à busca, passando um array e dentro do array passa-se um objeto, que possui a propriedade model e o valor será o model da tabela que se deseja realizar o join
+
+                router.get('/admin/articles', (req, res) => {
+                    Article.findAll({
+                        include: [{model: Category}]
+                    }).then((articles) => {
+                        res.render('admin/articles/index', {articles: articles});
+                    });
+                });
+
+- Para renderizar as propriedades do model incluído, basta realizar o acesso na view através de model.modelIncluded.column
+
+                <th><%= article.id %></th>
+                <th><%= article.title %></th>
+                <th><%= article.slug %></th>
+                <th><%= article.category.title %></th>

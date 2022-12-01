@@ -5,7 +5,9 @@ const Article = require ('../models/Article');
 const slugify = require('slugify');
 
 router.get('/admin/articles', (req, res) => {
-	Article.findAll().then((articles) => {
+	Article.findAll({
+		include: [{model: Category}]
+	}).then((articles) => {
 		res.render('admin/articles/index', {articles: articles});
 	});
 });
@@ -29,6 +31,26 @@ router.post('/admin/articles/save', (req, res) => {
 	}).then(() => {
 		res.redirect('/admin/articles');
 	});
+});
+
+router.post('/articles/delete', (req, res) => {
+	var id = req.body.id;
+
+	if (id.length > 0) {
+		if (!isNaN(id)) {
+			Article.destroy({
+				where: {
+					id: id
+				}
+			}).then(() => {
+				res.redirect('/admin/articles');
+			});
+		} else {
+			res.redirect('/admin/articles');
+		}
+	} else {
+		res.redirect('/admin/articles');
+	}
 });
 
 module.exports = router;

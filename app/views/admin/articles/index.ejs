@@ -6,7 +6,7 @@
         <hr>
         <div class="card">
             <div class="card-header">
-                <h2>Artugis</h2>
+                <h2>Artigos</h2>
             </div>
 
             <div class="card-body">
@@ -26,11 +26,9 @@
                                 <th><%= article.id %></th>
                                 <th><%= article.title %></th>
                                 <th><%= article.slug %></th>
-                                <th><%= article.categoryId %></th>
-                                <th>
-                                    <a class="" href="/admin/categories/edit/<%= article.id %>"><button class="btn btn-warning ">Editar</button></a>
-                                    
-                                    <form method="POST" action="/categories/delete" class="person" onsubmit="confirmDelete(event, this)">
+                                <th><%= article.category.title %></th>
+                                <th>                                    
+                                    <form method="POST" action="/articles/delete" class="person" onsubmit="confirmDelete(event, this)">
                                         <input type="hidden" name="id" value="<%= article.id %>">
                                         <button class="btn btn-danger" type="submit">Excluir</button>
                                     </form>
@@ -49,12 +47,12 @@
 <script>
     const confirmDelete = (event, form) =>{
         event.preventDefault();
-        let decision = confirm('Deseja excluir a categoria?');
+        let decision = confirm('Deseja excluir o artigo?');
         if (decision) {
-            alert('Categoria excluída');
+            alert('Artigo excluído');
             form.submit();
         } else {
-            alert('Categoria não excluída');
+            alert('Artigo não excluído');
         }
     }
 </script>
