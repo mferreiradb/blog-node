@@ -35,4 +35,26 @@ router.get('/:slug', (req, res) => {
 	});
 });
 
+router.get('/category/:slug', (req, res) => {
+	let slug = req.params.slug;
+	Category.findOne({
+		where: {
+			slug: slug
+		},
+		include: [{model: Article}]
+	}).then((category) => {
+		if (category != undefined) {
+			
+			Category.findAll().then((categories) => {
+				res.render('index', {articles: category.articles, categories: categories});	
+			});
+		} else {
+			res.redirect('/');
+		}
+	}).catch((err) => {
+		res.redirect('/');
+		console.log(err);
+	});
+});
+
 module.exports = router;
