@@ -3,11 +3,13 @@
         Mauricio Ferreira
     </a>
 
-    <ul class="navbar-nav m-auto">
-        <% categories.forEach((category) => { %>
-            
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a href="/" class="nav-link">Home</a>
+        </li>
+        <% categories.forEach((category) => { %>            
             <li class="nav-item">
-                <a href="/admin/categories" class="nav-link">Home</a>
+                <a href="/admin/categories" class="nav-link"><%= category.title %></a>
             </li>
             
         <% }) %>
