@@ -3,6 +3,10 @@ body {
     background-color: blue;
 }
 
+main {
+    padding: 3% 0;
+}
+
 .table-person {
     width: 30%;
 }
