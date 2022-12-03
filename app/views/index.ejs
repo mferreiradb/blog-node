@@ -1,31 +1,31 @@
 <%- include('partials/head.ejs') %>
 
-        <body>
-            <%- include('partials/navbarHome.ejs') %>
-            <div class="container">
+    <body>
+        <%- include('partials/navbarHome.ejs') %>
 
+            <div class="container">
                 <div class="jumbotron mt-4">
                     <h1 class="display-4">Olá! Tudo bem?</h1>
-                    <p class="lead">Este é um blog desenvolvido por <a href="https://meu-site-opal.vercel.app/">Mauricio Ferreira</a></p>
+                    <p class="lead">Este é um blog desenvolvido por <a href="https://meu-site-opal.vercel.app/" target="_blank">Mauricio
+                            Ferreira</a></p>
                     <hr class="my-4">
                     <p>Ele foi desenvolvido totalmente com JavaScript, em seu frontend e backend.</p>
                     <a class="btn btn-primary btn-lg" href="#" role="button">Leia mais</a>
-                  </div>
+                </div>
+                <main>
+                    <% articles.forEach((article)=> { %>
 
-                <% articles.forEach((article)=> { %>
-                    
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <%= article.title %>
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <%= article.title %>
+                            </div>
+                            <div class="card-body">
+                                <a href="/<%= article.slug %>"><button class="btn-primary">Ler artigo</button></a>
+                            </div>
                         </div>
-
-                        <div class="card-body">
-                            <a href="/<%= article.slug %>"><button class="btn-primary">Ler artigo</button></a>
-                        </div>
-                    </div>
-
-                <% }) %>
+                        <% }) %>
             </div>
-        </body>
+            </main>
+    </body>
 
- <%- include('partials/scripts.ejs') %>
+    <%- include('partials/scripts.ejs') %>
