@@ -30,7 +30,7 @@ router.post('/categorires/save', (req, res) => {
 	}
 });
 
-router.post('/categories/delete', (req, res) => {
+router.post('/admin/categories/delete', (req, res) => {
 	var id = req.body.id;
 
 	if (id.length > 0) {
@@ -68,7 +68,7 @@ router.get('/admin/categories/edit/:id', (req, res) => {
 	});
 });
 
-router.post('/categories/update', (req, res) => {
+router.post('/admin/categories/update', (req, res) => {
 	let id = req.body.id;
 	let title = req.body.title.toUpperCase();
 

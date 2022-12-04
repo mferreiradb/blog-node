@@ -53,4 +53,50 @@ router.post('/articles/delete', (req, res) => {
 	}
 });
 
+router.get('/admin/articles/edit/:id', (req, res) => {
+	let id = req.params.id;
+
+	if (isNaN(id)){
+		res.redirect('/admin/articles');
+	}
+	Article.findByPk(id).then((article) => {
+		if (article != undefined) {
+
+			Category.findAll().then((categories) => {
+				res.render('admin/articles/edit', {article: article, categories: categories});	
+			}).catch((err) => {
+				res.redirect('/admin/categories');
+				console.log(err);
+			});
+		} else {
+			res.redirect('/admin/categories');
+		}
+	}).catch((err) => {
+		console.log(err);
+		res.send('erro');
+	});
+});
+
+router.post('/admin/articles/update', (req, res) => {
+	let id = req.body.id;
+	let title = req.body.title.toUpperCase();
+	let category = req.body.category;
+	let body = req.body.body;
+
+	console.log('Titulo: '+title);
+	console.log('Id do artigo: '+id);
+	console.log('Id da categoria: '+category);
+	console.log('Corpo do artigo: '+body);
+
+	Article.update({title: title, slug: slugify(title), body: body, categoryId: category}, {
+		where: {
+			id: id
+		}
+	}).then(() => {
+		res.redirect('/admin/articles');
+	}).catch((err) => {
+		console.log('ERRO:'+ err);
+	});
+});
+
 module.exports = router;

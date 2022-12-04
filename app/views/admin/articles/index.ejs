@@ -27,8 +27,10 @@
                                 <th><%= article.title %></th>
                                 <th><%= article.slug %></th>
                                 <th><%= article.category.title %></th>
-                                <th>                                    
-                                    <form method="POST" action="/articles/delete" class="person" onsubmit="confirmDelete(event, this)">
+                                <th>
+                                    <a href="/admin/articles/edit/<%= article.id %>"><button class="btn btn-warning ">Editar</button></a>
+
+                                    <form method="POST" action="/articles/delete" class="mt-2" onsubmit="confirmDelete(event, this)">
                                         <input type="hidden" name="id" value="<%= article.id %>">
                                         <button class="btn btn-danger" type="submit">Excluir</button>
                                     </form>
