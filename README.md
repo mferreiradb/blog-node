@@ -501,3 +501,31 @@ i**PROJETO DE BLOG COM NODDE JS**
                         res.json(result);
                     });
                 });
+
+*Exibição dos elementos na rota de paginação*
+
+- O acesso à lista de artigos na paginação deve ser feito através a propriedade row, pois a função findAndCountAll() retorna a lista e o resultado
+
+                <%- include('../../partials/head.ejs') %>
+
+                    <body>
+                        <%- include('../../partials/navbarHome.ejs') %>
+
+                            <div class="container">
+                                <main>
+                                    <% result.articles.rows.forEach((article)=> { %>
+
+                                        <div class="card mb-4">
+                                            <div class="card-header">
+                                                <%= article.title %>
+                                            </div>
+                                            <div class="card-body">
+                                                <a href="/<%= article.slug %>"><button class="btn-primary">Ler artigo</button></a>
+                                            </div>
+                                        </div>
+                                    <% }) %>
+                                </main>
+                            </div>
+                    </body>
+
+                <%- include('../../partials/scripts.ejs') %>
