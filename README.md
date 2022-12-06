@@ -453,3 +453,51 @@ i**PROJETO DE BLOG COM NODDE JS**
                 <div class="card-body">
                     <%- article.body %>
                 </div>
+
+*Paginação*
+
+- Cria-se uma rota com parametro. O parametro indicará o numero da página exibida
+
+- Utiliza-se a função findAndCountAll() do Sequelize para buscar e contar a quantidade de elementos
+
+- Limita-se a quantidade de elementos visualizados através da constraint limit usada como parametro da função
+
+- Utiliza-se o parametro offset para determinar a partir de qual elemento o resultado será exibido
+
+    - Por exemplo: caso o valor do offset seja 10 e o limit 4, serão exibidos os elementos 11, 12, 13 e 14
+
+- Utiliza-se uma estrutura condicional para definir o offset como 0 caso a página seja 1 ou não seja um número
+
+- Foi criada uma variável booleana para verificar se há ou não mais artigos a serem mostrados em mais páginas
+
+                router.get('/articles/page/:num', (req, res) => {
+                    let page = req.params.num;
+                    let offset = 0;
+                    
+                    if (isNaN(page) || page == 1) {
+                        offset = 0;
+                    } else {
+                        offset = parseInt(page) * 4;
+                    }
+
+                    Article.findAndCountAll({
+                        limit: 4,
+                        offset: offset
+                    }).then((articles) => {
+
+                        let next;
+
+                        if (offset + 4 > articles.count) {
+                            next = false;
+                        } else {
+                            next = true;
+                        }
+                        
+                        let result = {
+                            next: next,
+                            articles: articles
+                        };
+
+                        res.json(result);
+                    });
+                });
