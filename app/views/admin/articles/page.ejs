@@ -17,6 +17,22 @@
                         </div>
                     <% }) %>
                 </main>
+
+                <div class="row">
+                    <div class="col col-22">
+
+                        <% if (result.page > 2) { %>
+                            <a style="float: left" href="/articles/page/<%= result.page - 1 %>"><button class="btn-primary mb-4">Anterior</button></a>
+                        <% } else if (result.page == 2) { %>
+                            <a style="float: left" href="/"><button class="btn-primary mb-4">Anterior</button></a>
+                        <% } %>
+                    </div>
+                    <div class="col col-22">
+                        <% if (result.next) { %>
+                            <a style="float: right" href="/articles/page/<%= result.page + 1 %>"><button class="btn-primary mb-4">Próximo</button></a>
+                        <% } %>
+                    </div>
+                </div>
             </div>
     </body>
 
