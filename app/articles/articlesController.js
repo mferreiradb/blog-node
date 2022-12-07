@@ -104,10 +104,10 @@ router.get('/articles/page/:num', (req, res) => {
 	let page = req.params.num;
 	let offset = 0;
 	
-	if (isNaN(page) || page == 1) {
+	if (isNaN(page) || page == 1 || page == 0) {
 		offset = 0;
 	} else {
-		offset = parseInt(page) * 4;
+		offset = (parseInt(page) -1) * 4;
 	}
 
 	Article.findAndCountAll({
