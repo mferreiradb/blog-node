@@ -7,6 +7,7 @@ router.get('/', (req, res) => {
 	Article.findAll({
 		order: [['id', 'desc']],
 		raw: true,
+		limit: 4,
 		include: [{model: Category}]
 	}).then((articles) => {
 		Category.findAll({}).then((categories) => {
