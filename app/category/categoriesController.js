@@ -72,9 +72,6 @@ router.post('/admin/categories/update', (req, res) => {
 	let id = req.body.id;
 	let title = req.body.title.toUpperCase();
 
-	console.log(title);
-	console.log(id);
-
 	Category.update({title: title, slug: slugify(title)}, {
 		where: {
 			id: id
