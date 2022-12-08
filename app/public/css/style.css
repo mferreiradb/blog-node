@@ -7,6 +7,14 @@ main {
     padding: 3% 0;
 }
 
+.btn-pointer {
+    cursor: pointer;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
 .table-person {
     width: 30%;
 }
