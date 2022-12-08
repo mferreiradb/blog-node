@@ -40,4 +40,24 @@ router.post('/admin/user/create', (req, res) => {
 	});
 });
 
+router.post('/admin/user/delete', (req, res) => {
+	var {id} = req.body;
+
+	if (id.length > 0) {
+		if (!isNaN(id)) {
+			User.destroy({
+				where: {
+					id: id
+				}
+			}).then(() => {
+				res.redirect('/admin/users');
+			});
+		} else {
+			res.redirect('/admin/users');
+		}
+	} else {
+		res.redirect('/admin/users');
+	}
+});
+
 module.exports = router;
