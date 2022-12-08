@@ -1,9 +1,23 @@
 <%- include('../../partials/head.ejs') %>
+<%- include('../../partials/navbar.ejs') %>
 
 <body>
     <main>
         <div class="container">
-            <h1>Criar usuários</h1>
+            <div class="card">
+                <div class="card-header">
+                    <h2>Criar usuário</h2>
+                </div>
+                <div class="card-body">
+                    <form action="/admin/user/create" method="POST">
+                        <input class="form-control" type="email" name="email" placeholder="email@example.com" autocomplete="off" required>
+
+                        <input class="form-control mt-4" type="password" name="password" placeholder="Digite sua senha" minlength="8" autocomplete="off" required>
+
+                        <button class="btn-success mt-4 btn-block btn-pointer" type="submit">Cadastrar</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </main>
 </body>
