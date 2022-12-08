@@ -26,6 +26,10 @@ i**PROJETO DE BLOG COM NODDE JS**
 
         npm i --save slugify
 
+- Bcrypt
+
+        npm i --save bcryptjs
+
 - TinyMCE
 
     - Baixar em:
@@ -529,3 +533,32 @@ i**PROJETO DE BLOG COM NODDE JS**
                     </body>
 
                 <%- include('../../partials/scripts.ejs') %>
+
+*Hash de senha*
+
+- Parecido com a criptografia de senha, porém, a criptografia segue padrões de encriptamento, e esses padrões podem ser feitos de forma inversa para que seja descoberta a senha. No hash, não há essa possibilidade
+
+- Bcrypt
+
+    - Biblioteca para Hash de senha
+
+- A biblioteca de hash será importada no controller no qual terá acesso a senha, neste caso, userController
+
+- Cria-se uma variável *salt* no escopo da rota que recebe a senha, que recebe bcrypt executando a função genSaltSync(10). Esta variável serve para auxiliar no hash da senha.
+
+- Cria-se uma variável que recebe bcrypt.hashSync() tendo como parametro a senha informada pelo usuário e o salt
+
+                router.post('/admin/user/create', (req, res) => {
+                    let {email, password} = req.body;
+                    let salt = bcrypt.genSaltSync(10);
+                    let hash = bcrypt.hashSync(password, salt);
+
+                    User.create({
+                        email: email,
+                        password: hash
+                    }).then(() => {
+                        res.redirect('/admin/users');
+                    }).catch((err) => {
+                        console.log(err);
+                    });
+                });
