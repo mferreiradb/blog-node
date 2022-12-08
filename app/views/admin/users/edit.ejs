@@ -1,0 +1,26 @@
+<%- include('../../partials/head.ejs') %>
+<%- include('../../partials/navbar.ejs') %>
+
+<body>
+    <main>
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Editar usuário</h2>
+                </div>
+                <div class="card-body">
+                    <form action="/admin/user/update" method="POST">
+                        <input type="hidden" name="id" value="<%= user.id %>">
+                        <input class="form-control" type="email" name="email" placeholder="email@example.com" autocomplete="off" required value="<%= user.email %>">
+
+                        <input class="form-control mt-4" type="password" name="password" placeholder="Digite a nova senha" minlength="8" autocomplete="off" required>
+
+                        <button class="btn-success mt-4 btn-block btn-pointer" type="submit">Atualizar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+<%- include('../../partials/scripts.ejs') %>
