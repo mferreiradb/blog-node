@@ -25,7 +25,7 @@
                                 <th><%= user.id %></th>
                                 <th><%= user.email %></th>
                                 <th>
-                                    <a class="" href="/admin/categories/edit/<%= user.id %>"><button class="btn btn-warning ">Editar</button></a>
+                                    <a class="" href="/admin/users/edit/<%= user.id %>"><button class="btn btn-warning ">Editar</button></a>
                                     
                                     <form method="POST" action="/admin/user/delete" class="person" onsubmit="confirmDelete(event, this)">
                                         <input type="hidden" name="id" value="<%= user.id %>">
