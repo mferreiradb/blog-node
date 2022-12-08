@@ -1,0 +1,56 @@
+<%- include('../../partials/head.ejs') %>
+
+<body>
+    <%- include('../../partials/navbar.ejs') %>
+    <div class="container">
+        <hr>
+        <div class="card">
+            <div class="card-header">
+                <h2>Lista de Categoria</h2>
+            </div>
+
+            <div class="card-body">
+                <a href="/admin/users/new" class="btn btn-success mb-4">Criar novo usuário</a>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <% users.forEach((user) => { %>
+                            <tr>
+                                <th><%= user.id %></th>
+                                <th><%= user.email %></th>
+                                <th>
+                                    <a class="" href="/admin/categories/edit/<%= user.id %>"><button class="btn btn-warning ">Editar</button></a>
+                                    
+                                    <form method="POST" action="/categories/delete" class="person" onsubmit="confirmDelete(event, this)">
+                                        <input type="hidden" name="id" value="<%= user.id %>">
+                                        <button class="btn btn-danger" type="submit">Excluir</button>
+                                    </form>
+                                </th>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+<%- include('../../partials/scripts.ejs') %>
+<script>
+    const confirmDelete = (event, form) =>{
+        event.preventDefault();
+        let decision = confirm('Deseja excluir o usuário?');
+        if (decision) {
+            alert('usuário excluído');
+            form.submit();
+        } else {
+            alert('usuário não excluído');
+        }
+    }
+</script>
