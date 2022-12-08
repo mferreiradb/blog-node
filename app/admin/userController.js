@@ -10,4 +10,14 @@ router.get('/admin/users/create', (req, res) => {
 	res.render('admin/users/create');
 });
 
+router.post('/admin/user/create', (req, res) => {
+	let {email, password} = req.body;
+	User.create({
+		email: email,
+		password: password
+	}).then(() => {
+		res.redirect('/admin/users');
+	});
+});
+
 module.exports = router;
