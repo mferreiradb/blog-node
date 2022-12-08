@@ -15,6 +15,23 @@ router.get('/admin/users/new', (req, res) => {
 	res.render('admin/users/create');
 });
 
+router.get('/admin/users/edit/:id', (req, res) => {
+	let {id} = req.params;
+	
+	if (isNaN(id)) {
+		res.redirect('admin/users');
+	}
+	User.findByPk(id).then((user) => {
+		if (user != undefined) {
+			res.render('admin/users/edit', {user: user});
+		} else {
+			res.redirect('admin/users');
+		}
+	}).catch((err) => {
+		console.log(err);
+	});
+});
+
 router.post('/admin/user/create', (req, res) => {
 	let {email, password} = req.body;
 	let salt = bcrypt.genSaltSync(10);
@@ -58,6 +75,22 @@ router.post('/admin/user/delete', (req, res) => {
 	} else {
 		res.redirect('/admin/users');
 	}
+});
+
+router.post('/admin/user/update', (req, res) => {
+	let {email, password, id} = req.body;
+	let salt = bcrypt.genSaltSync(10);
+	let hash = bcrypt.hashSync(password, salt);
+
+	User.update({email: email, password: hash}, {
+		where: {
+			id: id
+		}
+	}).then(() => {
+		res.redirect('/admin/users');
+	}).catch((err) => {
+		console.log(err);
+	});
 });
 
 module.exports = router;
