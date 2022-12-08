@@ -26,7 +26,7 @@ i**PROJETO DE BLOG COM NODDE JS**
 
         npm i --save slugify
 
-- Bcrypt
+- Bcryptjs
 
         npm i --save bcryptjs
 
