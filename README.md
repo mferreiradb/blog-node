@@ -562,3 +562,18 @@ i**PROJETO DE BLOG COM NODDE JS**
                         console.log(err);
                     });
                 });
+
+
+*LOGIN*
+
+- Cookies
+
+    - Pequenos arquivos de texto muito simples que ficam armazenados no navegador e guardam informações do usuário
+
+- Sessões
+
+    - Mesma funcionalidade dos Cookies, porém as informações ficam salvas no Servidor
+
+    - Geralmente dependem dos Cookies, mas os dados ficam guardadas no Servidor
+
+    - Uma Sessão é iniciada no Servidor, que envia um Cookie ao browser com um ID único daquela Sessão
