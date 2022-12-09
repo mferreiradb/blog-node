@@ -577,3 +577,9 @@ i**PROJETO DE BLOG COM NODDE JS**
     - Geralmente dependem dos Cookies, mas os dados ficam guardadas no Servidor
 
     - Uma Sessão é iniciada no Servidor, que envia um Cookie ao browser com um ID único daquela Sessão
+
+    - Qualquer dado associado à sessão é armazenado no Servidor e associado a esse ID
+
+    - Em toda requisição, o browser envia de volta o cookie com o ID da sessão, o que permite ao servidor dar acesso aos dados associados àquele ID
+
+    - Portanto, usar sessões é um pouco mais seguro do que guardar dados diretamente em Cookies, já que se alguém tiver acesso ao Cookie, não tem acesso direto aos dados, além de que, não é possível armazenar muitos dados nos cookies
