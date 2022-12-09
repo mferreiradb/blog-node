@@ -6,6 +6,10 @@ i**PROJETO DE BLOG COM NODDE JS**
 
         npm i --save express
 
+- Express Session
+
+        npm i --save express-session
+
 - Sequelize 
 
         npm i --save sequelize
@@ -583,3 +587,21 @@ i**PROJETO DE BLOG COM NODDE JS**
     - Em toda requisição, o browser envia de volta o cookie com o ID da sessão, o que permite ao servidor dar acesso aos dados associados àquele ID
 
     - Portanto, usar sessões é um pouco mais seguro do que guardar dados diretamente em Cookies, já que se alguém tiver acesso ao Cookie, não tem acesso direto aos dados, além de que, não é possível armazenar muitos dados nos cookies
+
+- Express Session
+
+    - Biblioteca para trabalhar com sessões no express
+
+    - Necessario realizar a configuração da lib no arquivo index.js fazendo a importação do módulo
+
+    - Necessário ativar o gerenciamento de sessões na aplicação através de app.use()
+
+        - Será passado como parametro a variável de imporação do módulo, com os parametros Secret - que recebe uma palavra qualquer para auxiliar na segurança dos dados (recomendado definir algo aleatoreamente) - e cookie - que definirá a forma que seão salvos os cookies no navegador do usuário. Este é um cookie de identificação
+
+        - Podemos passar o parametro maxAge para o cookie, com o objetivo de definir quando ele irá expirar, com o valor tendo de ser passado em ms (milisegundos)
+
+                const session = require('express-session');
+                app.use(session({
+                    secret: 'mauaplicationsecret',
+                    cookie: { maxAge: 30000 }
+                }));
