@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const session = require('express-session');
 
 const Categories = require('./category/categoriesController.js');
 const Articles = require('./articles/articlesController.js');
@@ -11,6 +12,10 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 app.use(express.static('./public'));
+app.use(session({
+	secret: 'mauaplicationsecret',
+	cookie: { maxAge: 30000 }
+}));
 
 //ROTAS
 app.use('/', Home);
