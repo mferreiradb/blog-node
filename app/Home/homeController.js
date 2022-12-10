@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 	});
 });
 
-router.get('/:slug', (req, res) => {
+router.get('/article/:slug', (req, res) => {
 	let slug = req.params.slug;
 	Article.findOne({
 		where: {
@@ -56,6 +56,23 @@ router.get('/category/:slug', (req, res) => {
 		res.redirect('/');
 		console.log(err);
 	});
+});
+
+router.get('/session', (req, res) => {
+	req.session.treinamento = 'Node';
+	req.session.ano = '2022';
+	req.session.email = 'teste@teste.com';
+	req.session.user = {
+		username: 'mau',
+		email: 'mau@teste.com',
+		id: 12
+	};
+	res.send('Sessão gerada');
+});
+
+router.get('/read', (req, res) => {
+	req.session.treinamento;
+	res.json(req.session.user);
 });
 
 module.exports = router;
