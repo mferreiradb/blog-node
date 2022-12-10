@@ -2,8 +2,9 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
+const Admin = require('../middlewares/adminAuth');
 
-router.get('/admin/users', (req, res) => {
+router.get('/admin/users', Admin, (req, res) => {
 	User.findAll().then((users) => {
 		res.render('admin/users/index', { users: users });
 	}).catch((err) => {
@@ -11,11 +12,11 @@ router.get('/admin/users', (req, res) => {
 	});
 });
 
-router.get('/admin/users/new', (req, res) => {
+router.get('/admin/users/new', Admin, (req, res) => {
 	res.render('admin/users/create');
 });
 
-router.get('/admin/users/edit/:id', (req, res) => {
+router.get('/admin/users/edit/:id', Admin, (req, res) => {
 	let { id } = req.params;
 
 	if (isNaN(id)) {
@@ -32,7 +33,7 @@ router.get('/admin/users/edit/:id', (req, res) => {
 	});
 });
 
-router.post('/admin/user/create', (req, res) => {
+router.post('/admin/user/create', Admin, (req, res) => {
 	let { email, password } = req.body;
 	let salt = bcrypt.genSaltSync(10);
 	let hash = bcrypt.hashSync(password, salt);
@@ -57,7 +58,7 @@ router.post('/admin/user/create', (req, res) => {
 	});
 });
 
-router.post('/admin/user/delete', (req, res) => {
+router.post('/admin/user/delete', Admin, (req, res) => {
 	var { id } = req.body;
 
 	if (id.length > 0) {
@@ -77,7 +78,7 @@ router.post('/admin/user/delete', (req, res) => {
 	}
 });
 
-router.post('/admin/user/update', (req, res) => {
+router.post('/admin/user/update', Admin, (req, res) => {
 	let { email, password, id } = req.body;
 	let salt = bcrypt.genSaltSync(10);
 	let hash = bcrypt.hashSync(password, salt);
@@ -100,8 +101,6 @@ router.get('/login', (req, res) => {
 router.post('/admin/user/authenticate', (req, res) => {
 	let { email, password } = req.body;
 
-
-
 	User.findOne({
 		where: { email: email }
 	}).then((user) => {
@@ -113,7 +112,7 @@ router.post('/admin/user/authenticate', (req, res) => {
 					id: user.id,
 					email: user.email
 				};
-				res.json(req.session.user);
+				res.redirect('/admin/articles');
 			} else {
 				res.redirect('/login');
 			}
