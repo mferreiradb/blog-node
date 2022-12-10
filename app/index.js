@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.static('./public'));
 app.use(session({
 	secret: 'mauaplicationsecret',
-	cookie: { maxAge: 30000 },
+	cookie: { maxAge: 30000000 },
 	resave: true,
 	saveUninitialized: true
 }));
