@@ -588,6 +588,19 @@ i**PROJETO DE BLOG COM NODDE JS**
 
     - Portanto, usar sessões é um pouco mais seguro do que guardar dados diretamente em Cookies, já que se alguém tiver acesso ao Cookie, não tem acesso direto aos dados, além de que, não é possível armazenar muitos dados nos cookies
 
+    - Qualquer dado pode ser salvo em uma sessão. Este dado estará disponível para qualquer rota da aplicação
+
+        - Para que esses dados estejam disponíveis na aplicação será necessário acessar a rota na qual armazena esses dados e passá-los
+
+                req.session.treinamento = 'Node';
+                req.session.ano = '2022';
+                req.session.email = 'teste@teste.com';
+                req.session.user = {
+                    username: 'mau',
+                    email: 'mau@teste.com',
+                    id: 12
+                };
+
 - Express Session
 
     - Biblioteca para trabalhar com sessões no express
@@ -598,10 +611,14 @@ i**PROJETO DE BLOG COM NODDE JS**
 
         - Será passado como parametro a variável de imporação do módulo, com os parametros Secret - que recebe uma palavra qualquer para auxiliar na segurança dos dados (recomendado definir algo aleatoreamente) - e cookie - que definirá a forma que seão salvos os cookies no navegador do usuário. Este é um cookie de identificação
 
+        - Necessário passar os parametros resave e saveUninitialized para correção do aviso de depreciação 
+
         - Podemos passar o parametro maxAge para o cookie, com o objetivo de definir quando ele irá expirar, com o valor tendo de ser passado em ms (milisegundos)
 
                 const session = require('express-session');
                 app.use(session({
                     secret: 'mauaplicationsecret',
-                    cookie: { maxAge: 30000 }
+                    cookie: { maxAge: 30000 },
+                    resave: true,
+                    saveUninitialized: true
                 }));
