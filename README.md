@@ -668,3 +668,38 @@ i**PROJETO DE BLOG COM NODDE JS**
                         console.log(err);
                     });
                 });
+
+*Autorização*
+
+- Middlewares
+
+    - Função que fica entre a requisição e a resposta para o usuário
+
+    - Recebe 3 parametros: req, res e next
+
+    - O next irá indicar que deve ser dado continuidade na requisição
+
+                const adminAuth = (req, res, next) => {
+                    if (req.session.user != undefined) {
+                        next();
+                    } else {
+                        res.redirect('/');
+                    }
+                };
+
+                module.exports = adminAuth;
+
+- Definimos por meio de um middleware quem pode ou não acessar as rotas
+
+- Para atribuir o middleware a uma rota, basta passar a função importada do middleware nos parametros da requisição
+
+                const Admin = require('../middlewares/adminAuth');
+
+                router.get('/admin/articles', Admin, (req, res) => {
+                    Article.findAll({
+                        order: [['id','desc']],
+                        include: [{model: Category}]
+                    }).then((articles) => {
+                        res.render('admin/articles/index', {articles: articles});
+                    });
+                });
