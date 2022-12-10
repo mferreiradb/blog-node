@@ -607,6 +607,14 @@ i**PROJETO DE BLOG COM NODDE JS**
 
     - Necessario realizar a configuração da lib no arquivo index.js fazendo a importação do módulo
 
+    - Possui um Storage
+
+        - Salva os dados na memória do Servidor (dados salvos na memória ram do computador)
+
+            - Não indicado para sistemas de médio e de grande porte, devido à quantidade de requisição
+
+        - Para resolver a questão do salvar os dados no Storage, pode-se utilizar uma ferramenta para salvamento de sessões e cache, como o *Redis*
+
     - Necessário ativar o gerenciamento de sessões na aplicação através de app.use()
 
         - Será passado como parametro a variável de imporação do módulo, com os parametros Secret - que recebe uma palavra qualquer para auxiliar na segurança dos dados (recomendado definir algo aleatoreamente) - e cookie - que definirá a forma que seão salvos os cookies no navegador do usuário. Este é um cookie de identificação
@@ -614,6 +622,8 @@ i**PROJETO DE BLOG COM NODDE JS**
         - Necessário passar os parametros resave e saveUninitialized para correção do aviso de depreciação 
 
         - Podemos passar o parametro maxAge para o cookie, com o objetivo de definir quando ele irá expirar, com o valor tendo de ser passado em ms (milisegundos)
+
+        - Quando o Servidor expira, os dados são apagados
 
                 const session = require('express-session');
                 app.use(session({
