@@ -632,3 +632,11 @@ i**PROJETO DE BLOG COM NODDE JS**
                     resave: true,
                     saveUninitialized: true
                 }));
+
+- Autenticação de login
+
+    - Utilizamos o bcrypt para validar a senha através da função compareSync(), que recebe dois parametros: o primeiro parametro será a senha passada pelo usuário no body, e o segundo será a senha no banco de dados
+
+        - Podemos fazer uma busca pelo email passado no body e, caso encontremos o email, comparar a senha, acessando como um objeto
+    
+    - Se o usuário for validado, iniciamos uma sessão pegando o email e id do usuário
