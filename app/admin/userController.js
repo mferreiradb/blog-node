@@ -95,7 +95,11 @@ router.post('/admin/user/update', Admin, (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-	res.render('admin/users/login');
+	if (req.session.user != undefined) {
+		res.redirect('/admin/articles');
+	} else {
+		res.render('admin/users/login');
+	}
 });
 
 router.post('/admin/user/authenticate', (req, res) => {
@@ -122,6 +126,11 @@ router.post('/admin/user/authenticate', (req, res) => {
 	}).catch((err) => {
 		console.log(err);
 	});
+});
+
+router.get('/logout', (req, res) => {
+	req.session.user = undefined;
+	res.redirect('/');
 });
 
 module.exports = router;
