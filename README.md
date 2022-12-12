@@ -1,5 +1,7 @@
 i**PROJETO DE BLOG COM NODDE JS**
 
+<img src="![IMG Home](assets/Home.PNG)">
+
 *Dependencias*
 
 - Express
