@@ -2,10 +2,39 @@ i**PROJETO DE BLOG COM NODDE JS**
 
 *Página inicial do blog*
 
-![IMG Home](assets/Home.PNG)
+![Alt Home](assets/Home.PNG)
 
+*Paginação*
+
+![Alt Paginacao](assets/Paginacao.PNG)
+
+*Exemplo de filtragem por categoria e paginação*
 
 ![Alt text](assets/2022-12-11%2022-51-44.gif)
+
+*Tela de login*
+
+![Alt Login](assets/Login.PNG)
+
+*Listagem de artigos*
+
+![Alt Artigos](assets/Articles.PNG)
+
+*Criação de artigos*
+
+![Alt criacao-artigos](assets/Criar-artigo.PNG)
+
+*Leitura de artigo*
+
+![Alt leitura-artigo](assets/Leitura-artigo.png)
+
+*Listagem de categorias*
+
+![Alt categorias](assets/Categorias.png)
+
+*Tela de Login*
+
+![Alt login](assets/Login.PNG)
 
 *Dependencias*
 
