@@ -21,22 +21,23 @@
                             <th>Ações</th>
                         </tr>
                     </thead>
-                    <% articles.forEach((article) => { %>
-                        <tr>
-                                <th><%= article.id %></th>
-                                <th><%= article.title %></th>
-                                <th><%= article.slug %></th>
-                                <th><%= article.category.title %></th>
-                                <th>
-                                    <a href="/admin/articles/edit/<%= article.id %>"><button class="btn btn-warning ">Editar</button></a>
-
-                                    <form method="POST" action="/articles/delete" class="mt-2" onsubmit="confirmDelete(event, this)">
-                                        <input type="hidden" name="id" value="<%= article.id %>">
-                                        <button class="btn btn-danger" type="submit">Excluir</button>
-                                    </form>
-                                </th>
-                            </tr>
-                    <% }) %>
+                    <tbody>
+                        <% articles.forEach((article) => { %>
+                                <tr>
+                                    <td><%= article.id %></td>
+                                    <td><%= article.title %></td>
+                                    <td><%= article.slug %></td>
+                                    <td><%= article.category.title %></td>
+                                    <td>
+                                        <a href="/admin/articles/edit/<%= article.id %>"><button class="btn btn-warning ">Editar</button></a>
+                                        <form method="POST" action="/articles/delete" class="mt-2" onsubmit="confirmDelete(event, this)">
+                                            <input type="hidden" name="id" value="<%= article.id %>">
+                                            <button class="btn btn-danger" type="submit">Excluir</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                        <% }) %>
+                    </tbody>
                     <tbody>
                     </tbody>
                 </table>

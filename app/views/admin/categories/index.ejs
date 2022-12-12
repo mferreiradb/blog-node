@@ -30,7 +30,7 @@
                                 <th>
                                     <a class="" href="/admin/categories/edit/<%= category.id %>"><button class="btn btn-warning ">Editar</button></a>
                                     
-                                    <form method="POST" action="/categories/delete" class="person" onsubmit="confirmDelete(event, this)">
+                                    <form method="POST" action="/admin/categories/delete" class="person" onsubmit="confirmDelete(event, this)">
                                         <input type="hidden" name="id" value="<%= category.id %>">
                                         <button class="btn btn-danger" type="submit">Excluir</button>
                                     </form>
