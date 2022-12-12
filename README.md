@@ -1,6 +1,11 @@
 i**PROJETO DE BLOG COM NODDE JS**
 
+*Página inicial do blog*
+
 ![IMG Home](assets/Home.PNG)
+
+
+![Alt text](assets/2022-12-11%2022-51-44.gif)
 
 *Dependencias*
 
