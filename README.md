@@ -36,6 +36,14 @@ i**PROJETO DE BLOG COM NODDE JS**
 
 ![Alt login](assets/Login.PNG)
 
+*Criação de usuário*
+
+![Alt Criar-user](assets/Criar-user.png)
+
+*Senhas dos usuários protegidas*
+
+![Alt users](assets/Users.png)
+
 *Dependencias*
 
 - Express
