@@ -60,6 +60,10 @@ i**PROJETO DE BLOG COM NODDE JS**
 
 ![Alt editar-usuario](assets/Editar-user.PNG)
 
+*Confirmação de exclusão*
+
+![Alt confirm-excluir](assets/2022-12-14%2014-52-03_Trim.gif)
+
 *Dependencias*
 
 - Express
