@@ -36,6 +36,10 @@ i**PROJETO DE BLOG COM NODDE JS**
 
 ![Alt categorias](assets/Categorias.png)
 
+*Criação de categorias*
+
+![Alt criar-categorias](assets/Criar-categoria.png)
+
 *Tela de Login*
 
 ![Alt login](assets/Login.PNG)
