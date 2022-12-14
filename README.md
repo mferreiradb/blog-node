@@ -56,6 +56,10 @@ i**PROJETO DE BLOG COM NODDE JS**
 
 ![Alt users](assets/Users.png)
 
+*Edição e usuário*
+
+![Alt editar-usuario](assets/Editar-user.PNG)
+
 *Dependencias*
 
 - Express
