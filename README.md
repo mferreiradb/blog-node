@@ -40,6 +40,10 @@ i**PROJETO DE BLOG COM NODDE JS**
 
 ![Alt criar-categorias](assets/Criar-categoria.png)
 
+*Listagem de usuários*
+
+![Alt usuarios](assets/Listar-Users.png)
+
 *Tela de Login*
 
 ![Alt login](assets/Login.PNG)
