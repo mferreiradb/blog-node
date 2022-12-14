@@ -28,6 +28,8 @@ i**PROJETO DE BLOG COM NODDE JS**
 
 ![Alt leitura-artigo](assets/Leitura-artigo.png)
 
+*Edição de artigo*
+
 ![Alt editar-artigo](assets/Editar-artigo.PNG)
 
 *Listagem de categorias*
