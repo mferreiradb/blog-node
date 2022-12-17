@@ -1,4 +1,4 @@
-i**PROJETO DE BLOG COM NODDE JS**
+**PROJETO DE BLOG COM NODDE JS**
 
 *Página inicial do blog*
 
