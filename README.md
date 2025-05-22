@@ -52,10 +52,6 @@
 
 ![Alt Criar-user](assets/Criar-user.png)
 
-*Senhas dos usuários protegidas*
-
-![Alt users](assets/Users.png)
-
 *Edição e usuário*
 
 ![Alt editar-usuario](assets/Editar-user.PNG)
